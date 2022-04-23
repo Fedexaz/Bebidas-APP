@@ -11,3 +11,56 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.drink-card {
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0px 0px 2px 0px;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.drink-card:hover {
+  transform: scale(1.03);
+}
+
+.drink-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px;
+}
+
+.button {
+  padding: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+  transition: .3s;
+  background: #f9f9f9;
+  color: black;
+  border: 1px solid #d3daf4;
+  text-decoration: none !important;
+}
+
+.button:hover {
+  background: #365fe5;
+  color: white;
+  border: 1px solid #133fd0;
+}
+
+.button:active {
+  transform: scale(0.95);
+}

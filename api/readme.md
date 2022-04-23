@@ -12,21 +12,25 @@
 
 #### /user
 
-* /login
-* /register
+* [POST] /login
+* [POST] /register
 
 #### /bebidas
 
-* /bebidas/agregar
-* /bebidas/editar
-* /bebidas/remover
-* /todas
-* /filtrar
-* /:id
-* /comentar
+* [GET] /bebidas/ver
+* [POST] /bebidas/agregar
+* [PUT] /bebidas/editar
+* [DELETE] /bebidas/remover
+* [POST] /bebidas/comentar
+* [GET] /bebidas/likes <-- VER LIKES DE UNA BEBIDA
+* [POST] /bebidas/like <-- AGREGAR LIKE A UNA BEBIDA
+* [GET] /todas
+* [GET] /filtrar
+* [GET] /:id
 
 #### /user/favoritos
 
-* /agregar
-* /remover
-* /editar
+* [GET] /ver
+* [POST] /agregar
+* [PUT] /editar
+* [DELETE] /remover

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const verifyToken = require('./validate-token');
 const {
     authRegisterController,
     authLoginController
@@ -7,5 +7,12 @@ const {
 
 router.post('/login', authLoginController);
 router.post('/register', authRegisterController);
+
+/* 
+router.get('/favoritos/ver', authRegisterController);
+router.post('/favoritos/agregar', authRegisterController);
+router.put('/favoritos/editar', authRegisterController);
+router.delete('/favoritos/remover', authRegisterController);
+ */
 
 module.exports = router;

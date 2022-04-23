@@ -1,8 +1,7 @@
 const app = require('express').Router();
 const authRoutes = require('./auth');
-const verifyToken = require('./validate-token');
 
-//app.use('/dashboard', verifyToken, dashboadRoutes)
 app.use('/user', authRoutes);
+//app.use('/bebidas', authRoutes);
 
 module.exports = app;

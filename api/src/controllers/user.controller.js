@@ -1,7 +1,7 @@
 const {
     authLoginService,
     authRegisterService
-} = require('../services/auth.service');
+} = require('../services/user.service');
 
 const Joi = require('@hapi/joi');
 
@@ -23,10 +23,7 @@ const authLoginController = async (req, res) => {
     try {
         const token = await authLoginService(req.body);
         if (token.length > 100) {
-            res.header('auth-token', token).json({
-                error: null,
-                data: { token }
-            })
+            res.header('auth-token', token).json(token);
         }
         else {
             res.status(400).json({ error: token })
@@ -45,13 +42,10 @@ const authRegisterController = async (req, res) => {
     try {
         const user = await authRegisterService(req.body);
         if (typeof token !== 'string') {
-            res.status(201).json({
-                error: null,
-                data: user
-            });
+            res.status(201).json(user);
         }
         else {
-            res.status(400).json({ error: token })
+            res.status(400).json({ error: "No se pudo iniciar sesión" });
         }
     } catch (error) {
         res.status(400).json({ error });

@@ -14,14 +14,14 @@ Ruta | Descripción
 #### /user
 
 Tipo | Ruta | Descripción
---- | ---
+--- | --- | ---
 POST | /login | Ruta para iniciar sesión
 POST | /register | Ruta para registrarte como usuario
 
 #### /user/favoritos
 
 Tipo | Ruta | Descripción
---- | ---
+--- | --- | ---
 GET | /ver | Ruta para ver las bebidas favoritas
 POST | /agregar | Ruta para agregar una bebida a favoritos
 DELETE | /remover | Ruta para eliminar una bebida de favoritos
@@ -29,7 +29,7 @@ DELETE | /remover | Ruta para eliminar una bebida de favoritos
 #### /bebidas
 
 Tipo | Ruta | Descripción | Tipos de query
---- | ---
+--- | --- | --- | ---
 GET | /todas | Ruta para ver las todas bebidas
 GET | / filtrar | Ruta para filtrar las bebidas | nombre
 GET | /:id | Ruta para ver una bebida en específico, en éste caso por ID
@@ -43,7 +43,7 @@ DELETE | /comentario | Ruta para eliminar un comentario de una bebida
 #### /mis-bebidas
 
 Tipo | Ruta | Descripción
---- | ---
+--- | --- | ---
 POST | /agregar | Ruta para agregar una bebida a la base de datos
 PUT | /editar | Ruta para editar una bebida de la base de datos
 DELETE | /remover | Ruta para eliminar una bebida de la base de datos

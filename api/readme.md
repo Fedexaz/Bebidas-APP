@@ -36,6 +36,7 @@ GET | /:id | Ruta para ver una bebida en específico, en éste caso por ID
 GET | /likes | Ruta para darle Me Gusta a una bebida
 POST | /like | Ruta para darle Me Gusta a una bebida
 DELETE | /like | Ruta para quitar el Me Gusta a una bebida
+GET | /comentarios | Ruta para obtener los comentarios de una bebida
 POST | /comentario | Ruta para agregar un comentario a una bebida
 PUT | /comentario | Ruta para editar el comentario de una bebida
 DELETE | /comentario | Ruta para eliminar un comentario de una bebida

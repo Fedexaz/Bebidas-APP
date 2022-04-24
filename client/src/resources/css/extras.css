@@ -1,0 +1,42 @@
+.jumbotron {
+    background: url('../images/banner.jpg');
+    background-size: cover;
+    background-position: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2px;
+    padding-bottom: 20px;
+    border-radius: 2px;
+    border-bottom: 1px solid #c7c7c7;
+    height: 400px;
+}
+
+.jumbotron-title {
+    font-size: 55px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.jumbotron-subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.jumbotron-search {
+    display: flex;
+    justify-content: center;
+    background: white;
+    opacity: 90%;
+    padding: 30px;
+    border-radius: 5px;
+    margin-left: 100px;
+}
+
+@media (max-width: 600px) {
+    .jumbotron-search {
+        margin-left: 2px;
+    }
+}

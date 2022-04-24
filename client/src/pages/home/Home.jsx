@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import NavBar from '../../components/navbar/NavBar';
 import Drink from '../../components/home/Drink';
 import { getDrinksByLetterRandom } from '../../services/drinks.services';
+import Jumbotron from '../../components/home/Jumbotron';
+import Loader from '../../components/Loader';
 
 export default function Home() {
   const [drinks, setDrinks] = useState([]);
+  const [loadingDrinks, setLoadingDrinks] = useState(true);
 
   useEffect(() => {
     loadData();
@@ -13,6 +16,7 @@ export default function Home() {
   const loadData = async () => {
     try {
       setDrinks(await getDrinksByLetterRandom());
+      setLoadingDrinks(false);
     } catch (error) {
       console.log("Error al cargar bebidas");
     }
@@ -20,17 +24,18 @@ export default function Home() {
 
   return (
     <>
-      <NavBar />
+      <Jumbotron />
+      <NavBar setDrinks={setDrinks} />
       <div className='container'>
-        <h1>
-          Bebidas
-        </h1>
-        <div className='drink-container'>
+        <div className={`drink-container ${!loadingDrinks ? 'animar' : null}`}>
           {
-            drinks.length ?
-              drinks.map(drink => <Drink key={drink.idDrink} data={drink} />)
+            !loadingDrinks ?
+              drinks.length ?
+                drinks.map(drink => <Drink key={drink.idDrink} data={drink} />)
+                :
+                null
               :
-              null
+              <Loader />
           }
         </div>
       </div>

@@ -53,7 +53,11 @@ const saveToDB = async () => {
                 strMeasure15: bebida[i].strMeasure15,
                 strImageSource: bebida[i].strImageSource,
                 strImageAttribution: bebida[i].strImageAttribution,
-                strCreativeCommonsConfirmed: bebida[i].strCreativeCommonsConfirmed
+                strCreativeCommonsConfirmed: bebida[i].strCreativeCommonsConfirmed,
+                likes: 0,
+                comments: 0,
+                createdInPage: true,
+                idCreator: userID  
             });
             await datos.save();
             console.log(`${datos.strDrink} (ID: ${datos.idDrink}) guardada en la base de datos!`);

@@ -17,11 +17,11 @@ router.get('/:id', getDrinkController);
 router.get('/todas', getAllDrinksController);
 router.get('/filtrar', filterDrinksController);
 
-router.get('/likes', getLikesController);
+router.get('/likes/:id', getLikesController);
 router.post('/like', addLikeController);
 router.delete('/like', removeLikeController);
 
-router.get('/comentarios', getCommentsController); 
+router.get('/comentarios/:id', getCommentsController); 
 router.post('/comentario', addCommentController);
 router.put('/comentario', editCommentController);
 router.delete('/comentario', deleteCommentController);

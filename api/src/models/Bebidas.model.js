@@ -47,6 +47,10 @@ const bebidasSchema = new Schema({
     strImageSource: String,
     strImageAttribution: String,
     strCreativeCommonsConfirmed: String,
+    likes: Array,
+    comments: Number,
+    createdInPage: Boolean,
+    idCreator: String   
 });
 
 module.exports = model('Bebidas', bebidasSchema);

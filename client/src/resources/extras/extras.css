@@ -1,0 +1,9 @@
+body {
+    background: #070e0d;
+}
+
+.banner-img {
+    background: url('../images/banner.jpg');
+    background-position: -300px;
+    background-size: cover;
+}

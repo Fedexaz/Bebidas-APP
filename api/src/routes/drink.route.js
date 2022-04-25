@@ -13,9 +13,9 @@ const {
     deleteCommentController
 } = require('../controllers/drink.controller');
 
-router.get('/:id', getDrinkController);
 router.get('/todas', getAllDrinksController);
 router.get('/filtrar', filterDrinksController);
+router.get('/:id', getDrinkController);
 
 router.get('/likes/:id', getLikesController);
 router.post('/like', addLikeController);

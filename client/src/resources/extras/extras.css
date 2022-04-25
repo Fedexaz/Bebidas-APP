@@ -7,3 +7,11 @@ body {
     background-position: -300px;
     background-size: cover;
 }
+
+.hover-tarjeta {
+    transition: .3s;
+}
+
+.hover-tarjeta:hover {
+    transform: scale(1.02);
+}

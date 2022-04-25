@@ -4,7 +4,6 @@ const bebidasSchema = new Schema({
     nombre: String,
     categoria: String,
     tieneAlcohol: String,
-    dondeSeSirve: String,
     instrucciones: String,
     ingredientes: String,
     cantidades: String,

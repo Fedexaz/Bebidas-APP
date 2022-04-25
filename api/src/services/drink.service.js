@@ -25,7 +25,7 @@ const getAllDrinksService = async () => {
 const filterDrinksService = async (strDrink) => {
     try {
         const datos = await Bebidas.find({ strDrink });
-        return datos; 
+        return datos;
     } catch (error) {
         console.log(error);
         throw error;
@@ -45,7 +45,7 @@ const getLikesService = async (drinkID) => {
 const addLikeService = async (drinkID, userID) => {
     try {
         const datos = await Bebidas.findById(drinkID);
-        if(datos.likes.indexOf(userID) === -1){
+        if (datos.likes.indexOf(userID) === -1) {
             datos.likes.push(userID);
             await datos.save();
         }
@@ -71,9 +71,9 @@ const removeLikeService = async (drinkID, userID) => {
 
 const getCommentsService = async (drinkID) => {
     try {
-        const comentarios =  [];
+        const comentarios = [];
         const commentsData = await Comment.find({ drinkID });
-        
+
         commentsData.length ? commentsData.forEach(async (comm) => {
             const user = await User.findById(comm.userID);
             comentarios.push({
@@ -105,7 +105,7 @@ const addCommentService = async (data) => {
 const editCommentService = async (commentID, userID, comm) => {
     try {
         const comment = await Comment.findById(commentID);
-        if(comment.userID === userID){
+        if (comment.userID === userID) {
             comment.comment = comm;
             await comment.save();
         }
@@ -118,12 +118,18 @@ const editCommentService = async (commentID, userID, comm) => {
     }
 };
 
-const deleteCommentService = async (commentID) => {
+const deleteCommentService = async (commentID, userID) => {
     try {
-        await Comment.findByIdAndDelete(commentID);
-        const drink = await Bebidas.findById(data.drinkID);
-        drink.comments -= 1
-        await drink.save();
+        const comment = await Comment.findById(commentID);
+        if (comment.userID === userID) {
+            await Comment.findByIdAndDelete(commentID);
+            const drink = await Bebidas.findById(data.drinkID);
+            drink.comments -= 1
+            await drink.save();
+        }
+        else {
+            throw Error("No es tu comentario");
+        }
     } catch (error) {
         console.log(error);
         throw error;

@@ -50,7 +50,7 @@ const bebidasSchema = new Schema({
     likes: Array,
     comments: Number,
     createdInPage: Boolean,
-    idCreator: String   
+    creatorID: String   
 });
 
 module.exports = model('Bebidas', bebidasSchema);

@@ -130,12 +130,12 @@ const editCommentController = async (req, res) => {
 };
 
 const deleteCommentController = async (req, res) => {
-    if(!req.body.commentID) {
+    if(!req.body.commentID || !req.body.userID) {
         return res.status(400).json({ error: "Necesitas proporcionar el ID de un comentario" });    
     }
 
     try {
-        await deleteCommentService(req.body.commentID);
+        await deleteCommentService(req.body.commentID, req.body.userID);
         return res.status(200).json({ message: "Comentario eliminado correctamente!" });
     } catch (error) {
         console.log(error);

@@ -11,7 +11,6 @@ const saveToDB = async () => {
                 nombre: bebida[i].nombre,
                 categoria: bebida[i].categoria,
                 tieneAlcohol: bebida[i].tieneAlcohol,
-                dondeSeSirve: bebida[i].dondeSeSirve,
                 instrucciones: bebida[i].instrucciones,
                 ingredientes: bebida[i].ingredientes,
                 cantidades: bebida[i].cantidades,

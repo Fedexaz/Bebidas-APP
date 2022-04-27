@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Loader from '../components/Loader/Loader';
 import { getDrinks } from '../services/getdrinks.service';
 import { FcIdea } from 'react-icons/fc';
 import { filterByAlcoholic, filterByCategory, filterByName, orderByComments, orderByName, orderByReactions } from '../controllers/drinksFilters.controller';
+import { logueado } from '../services/user.service';
 import Paginator from '../components/Home/Paginator';
+import Footer from '../components/Home/Footer';
+import NavBar from '../components/Home/NavBar';
 
 export default function Home() {
   useEffect(() => {
     document.title = "TuFinde! - Inicio"
   }, []);
+
+  const goto = useNavigate();
 
   const [change, setChange] = useState(false);
 
@@ -101,6 +107,7 @@ export default function Home() {
 
   return (
     <>
+      <NavBar />
       <div className="p-5 bg-dark banner-img border-dark">
         <div className='d-flex flex-column align-items-center'>
           <h1 className="display-3 text-light mt-5">Tu Finde!</h1>
@@ -172,7 +179,7 @@ export default function Home() {
             </div>
             <hr />
             <div className="alert alert-info" role="alert">
-              ¿Tienes la receta de una bebida y deseas compartirla? <button type="button" className='btn btn-info'><strong>¡Hazlo aquí!</strong></button>
+              ¿Tienes la receta de una bebida y deseas compartirla? <br /> <button onClick={() => logueado() ? goto('/mis-bebidas') : goto('/login')} type="button" className='btn btn-info'>¡Hazlo aquí!</button>
             </div>
 
           </div>
@@ -195,7 +202,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <a href='https://www.freepik.es/fotos/refresco-cola'>Foto de refresco cola creado por Racool_studio - www.freepik.es</a>
+        <Footer />
       </div>
     </>
   )

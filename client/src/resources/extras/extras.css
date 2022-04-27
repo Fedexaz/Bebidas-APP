@@ -15,3 +15,25 @@ body {
 .hover-tarjeta:hover {
     transform: scale(1.02);
 }
+
+.boton {
+    transition: .1s;
+}
+
+.boton:hover {
+    cursor: pointer;
+}
+
+.boton-menu {
+    transition: .1s;
+}
+
+.boton-menu:hover {
+    cursor: pointer;
+    color: black !important;
+}
+
+.barra {
+    display: inline-block;
+    margin-left: auto;
+}

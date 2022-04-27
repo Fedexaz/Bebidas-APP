@@ -26,7 +26,7 @@ const authLoginController = async (req, res) => {
             res.header('auth-token', token).json(token);
         }
         else {
-            res.status(400).json({ error: token })
+            res.status(400).json({ error: "No se pudo iniciar sesión, reintente..." })
         }
     } catch (error) {
         return res.status(400).json({ error });
@@ -35,17 +35,15 @@ const authLoginController = async (req, res) => {
 
 const authRegisterController = async (req, res) => {
     const { error } = schemaRegister.validate(req.body);
+    if (error) return res.status(400).json({ error: error.details[0].message });
 
-    if (error) {
-        return res.status(400).json({ error: error.details[0].message });
-    }
     try {
         const user = await authRegisterService(req.body);
         if (typeof token !== 'string') {
             res.status(201).json(user);
         }
         else {
-            res.status(400).json({ error: "No se pudo iniciar sesión" });
+            res.status(400).json({ error: "No se ha podido registrar, reintente..." });
         }
     } catch (error) {
         res.status(400).json({ error });

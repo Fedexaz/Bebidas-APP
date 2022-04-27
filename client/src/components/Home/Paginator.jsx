@@ -7,10 +7,6 @@ export default function Paginator({ data, hasChange }) {
   const [page, setPage] = useState(0);
 
   useEffect(() => {
-    document.title = "TuFinde! Página " + (page + 1) + " - Inicio";
-  }, [page]);
-
-  useEffect(() => {
     setPage(0);
   }, [hasChange]);
 
@@ -34,14 +30,14 @@ export default function Paginator({ data, hasChange }) {
       }
       <div style={{ width: '100%' }} className='d-flex justify-content-center'>
         <ul className="nav nav-pills flex-row">
-          <li className="nav-item m-4">
-            <button type="button" className={`btn btn-info ${page < 1 ? 'btn-dark disabled' : ''}`} onClick={() => page < 1 ? null : setPage(page - 1)}>Anterior</button>
+          <li className="nav-item m-1">
+            <button type="button" className={`btn btn-info ${page < 1 ? 'btn-dark disabled' : ''}`} onClick={() => page < 1 ? null : setPage(page - 1)}>Ant</button>
           </li>
           {
             getButtonPages().map(el => {
               if (el <= getMaxPage()) {
                 return (
-                  <li className="nav-item m-4" key={el}>
+                  <li className="nav-item m-1" key={el}>
                     <button type="button" className={`btn btn-info ${page === el - 1 ? 'text-light' : ''}`} onClick={() => setPage(el - 1)}>{el}</button>
                   </li>
                 )
@@ -50,8 +46,8 @@ export default function Paginator({ data, hasChange }) {
               }
             })
           }
-          <li className="nav-item m-4">
-            <button type="button" className={`btn btn-info ${page >= (getMaxPage() - 1) ? 'btn-dark disabled' : ''}`} onClick={() => page >= (getMaxPage() - 1) ? null : setPage(page + 1)}>Siguiente</button>
+          <li className="nav-item m-1">
+            <button type="button" className={`btn btn-info ${page >= (getMaxPage() - 1) ? 'btn-dark disabled' : ''}`} onClick={() => page >= (getMaxPage() - 1) ? null : setPage(page + 1)}>Sig</button>
           </li>
         </ul>
       </div>

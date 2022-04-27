@@ -28,10 +28,10 @@ const authRegisterService = async (data) => {
 
 const authLoginService = async (data) => {
     const user = await User.findOne({ email: data.email });
-    if (!user) return 'Usuario no encontrado';
+    if (!user) throw Error('Usuario no encontrado');
 
     const validPassword = await bcrypt.compare(data.password, user.password);
-    if (!validPassword) return 'contraseña no válida';
+    if (!validPassword) throw Error('contraseña no válida');
 
     const token = jwt.sign({
         name: user.name,

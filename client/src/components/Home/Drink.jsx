@@ -1,14 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FcComments, FcLike, FcCheckmark, FcInfo } from 'react-icons/fc';
+import { FcComments, FcLike, FcInfo } from 'react-icons/fc';
 
 export default function Drink({ data }) {
   const goto = useNavigate();
   const { _id, nombre, categoria, tieneAlcohol, img, likes, comments } = data;
-
-  const handleFavorite = async () => {
-    
-  };
 
   return (
     <div className="card text-white bg-dark m-1 d-flex flex-row hover-tarjeta" style={{ width: '480px' }}>
@@ -27,8 +23,7 @@ export default function Drink({ data }) {
           </div>
         </div>
         <div className='mt-1'>
-          <button type="button" className="btn btn-sm btn-info m-1" onClick={() => goto('/drink/' + _id)}><FcInfo style={{ fontSize: '20px'}} />Más info</button>
-          <button type="button" className="btn btn-sm btn-info m-1" onClick={handleFavorite}><FcCheckmark style={{ fontSize: '20px'}} /> A favoritos</button>
+          <button type="button" className="btn btn-sm btn-info m-1" onClick={() => goto('/drink/' + _id)}><FcInfo style={{ fontSize: '20px'}} />Más detalles</button>
         </div>
       </div>
     </div>

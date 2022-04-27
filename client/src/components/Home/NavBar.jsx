@@ -10,14 +10,14 @@ export default function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-sm-top">
       <div className="container-fluid">
-        <span className="navbar-brand boton">TuFinde!</span>
+        <span className="navbar-brand boton" onClick={() => goto('/')}>TuFinde!</span>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item">
-              <span className="nav-link boton">Inicio</span>
+              <span className="nav-link boton" onClick={() => goto('/')}>Inicio</span>
             </li>
             <li className="nav-item mr-auto">
               <span className="nav-link boton">¡Publicá tus bebidas!</span>

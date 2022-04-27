@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const userLogin = async (email, password) => {
     try {
-        const resp = await axios.post('/user/login', {  email: String(email), password: String(password) });
+        const resp = await axios.post('/user/login', { email: String(email), password: String(password) });
         return resp.data;
     } catch (error) {
         return "Error al iniciar sesión, reintenta...";

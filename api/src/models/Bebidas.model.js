@@ -10,7 +10,10 @@ const bebidasSchema = new Schema({
     img: String,
     imgConDerechos: String,
     likes: Array,
-    comments: Number,
+    comments: {
+        type: Number,
+        default: 0
+    },
     createdInPage: Boolean,
     creatorID: String
 });

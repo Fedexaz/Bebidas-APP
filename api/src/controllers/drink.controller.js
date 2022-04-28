@@ -102,7 +102,7 @@ const getCommentsController = async (req, res) => {
 };
 
 const addCommentController = async (req, res) => {
-    if(!req.body.drinkID || !req.body.userID || !req.body.comment) {
+    if(!req.body.drinkID || !req.body.userID || !req.body.comment || !req.body.userName) {
         return res.status(400).json({ error: "Faltan datos para agregar el comentario" });    
     }
 
@@ -130,6 +130,7 @@ const editCommentController = async (req, res) => {
 };
 
 const deleteCommentController = async (req, res) => {
+    console.log(req.body)
     if(!req.body.commentID || !req.body.userID) {
         return res.status(400).json({ error: "Necesitas proporcionar el ID de un comentario" });    
     }

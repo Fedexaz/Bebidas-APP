@@ -62,35 +62,45 @@ export default function Home() {
     }
     if (name === 'alcohol') {
       setFiltroAlcoholica(value);
-      const backup = drinksBackup;
-      const data = filterByAlcoholic(backup, Number(value) === 1 ? 'Alcóholica' : 'No alcóholica');
-      setDrinks(data);
-      setChange(!change);
+      if (value !== '') {
+        const backup = drinksBackup;
+        const data = filterByAlcoholic(backup, Number(value) === 1 ? 'Alcóholica' : 'No alcóholica');
+        setDrinks(data);
+        setChange(!change);
+      }
     }
     if (name === 'categoria') {
       setFiltroCategoria(value);
-      const backup = drinksBackup;
-      const data = filterByCategory(backup, value);
-      setDrinks(data);
-      setChange(!change);
+      if (value !== '') {
+        const backup = drinksBackup;
+        const data = filterByCategory(backup, value);
+        setDrinks(data);
+        setChange(!change);
+      }
     }
     if (name === 'comentadas') {
       setOrdenComentadas(value);
-      const data = orderByComments(drinks, value);
-      setDrinks(data);
-      setChange(!change);
+      if (value !== '') {
+        const data = orderByComments(drinks, value);
+        setDrinks(data);
+        setChange(!change);
+      }
     }
     if (name === 'reaccionadas') {
       setOrdenReaccionadas(value);
-      const data = orderByReactions(drinks, value);
-      setDrinks(data);
-      setChange(!change);
+      if (value !== '') {
+        const data = orderByReactions(drinks, value);
+        setDrinks(data);
+        setChange(!change);
+      }
     }
     if (name === 'nombre') {
       setOrdenPorNombre(value);
-      const data = orderByName(drinks, value);
-      setDrinks(data);
-      setChange(!change);
+      if (value !== '') {
+        const data = orderByName(drinks, value);
+        setDrinks(data);
+        setChange(!change);
+      }
     }
   };
 
@@ -162,16 +172,16 @@ export default function Home() {
               <label htmlFor="comentadas" className="form-label text-light">Más comentadas</label>
               <select className="form-control" value={ordenComentadas} onChange={handleChange} name="comentadas" id="comentadas">
                 <option value={0}>Seleccionar...</option>
-                <option value={1}>Ascendente</option>
-                <option value={2}>Descendente</option>
+                <option value={2}>Primero</option>
+                <option value={1}>Al último</option>
               </select>
             </div>
             <div className="mb-3">
               <label htmlFor="reaccionadas" className="form-label text-light">Más populares</label>
               <select className="form-control" value={ordenReaccionadas} onChange={handleChange} name="reaccionadas" id="reaccionadas">
                 <option value={0}>Seleccionar...</option>
-                <option value={1}>Ascendente</option>
-                <option value={2}>Descendente</option>
+                <option value={2}>Primero</option>
+                <option value={1}>Al último</option>
               </select>
             </div>
             <div className="mb-3">
@@ -193,10 +203,13 @@ export default function Home() {
                   <Loader data='bebidas' />
                   :
                   drinks.length ?
-                    <Paginator data={drinks} hasChange={change}/>
+                    <Paginator data={drinks} hasChange={change} />
                     :
-                    <div className="alert alert-dark m-5 d-flex align-items-center" role="alert">
-                      <FcIdea style={{ fontSize: '25px' }} /> <strong>No hay bebidas disponibles</strong>
+                    <div className="alert alert-dark m-5 d-flex flex-column align-items-center" role="alert">
+                      <div>
+                        <FcIdea style={{ fontSize: '25px' }} /> <strong>No hay bebidas disponibles</strong>
+                      </div>
+                      <button type="button" class="btn btn-info mt-2" onClick={clearFilters}>Recargar bebidas</button>
                     </div>
               }
             </div>

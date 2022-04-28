@@ -16,8 +16,8 @@ export default function Footer() {
         <div className="col-md-4">
           <h4 className='display-6 text-light'>Enlaces de interés</h4>
           <div className="d-flex flex-column">
-            <a href='https://www.google.com/' target='_blank' rel='noreferrer' className='text-decoration-none'>Google</a>
             <a href='https://www.google.com/' target='_blank' rel='noreferrer' className='text-decoration-none'>Trabajá con nostros</a>
+            <a href='https://www.thecocktaildb.com/' target='_blank' rel='noreferrer' className='text-decoration-none'>ThecocktailDB</a>
             <a href='https://www.freepik.es/fotos/refresco-cola' target='_blank' rel='noreferrer' className='text-decoration-none'>Imágen del banner</a>
           </div>
         </div>

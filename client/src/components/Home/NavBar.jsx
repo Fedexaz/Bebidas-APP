@@ -20,7 +20,7 @@ export default function NavBar() {
               <span className="nav-link boton" onClick={() => goto('/')}>Inicio</span>
             </li>
             <li className="nav-item mr-auto">
-              <span className="nav-link boton">¡Publicá tus bebidas!</span>
+              <span className="nav-link boton" onClick={() => logueado() ? goto('/mis-bebidas/agregar') : goto('/login')} >¡Publicá tus bebidas!</span>
             </li>
           </ul>
           <ul className="navbar-nav barra mb-2 mb-lg-0">

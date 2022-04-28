@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const verifyToken = require('../middlewares/validate-token');
 
 const {
     getDrinkController,
@@ -18,12 +19,12 @@ router.get('/filtrar', filterDrinksController);
 router.get('/:id', getDrinkController);
 
 router.get('/likes/:id', getLikesController);
-router.post('/like', addLikeController);
-router.delete('/like', removeLikeController);
+router.post('/like', verifyToken, addLikeController);
+router.delete('/like', verifyToken, removeLikeController);
 
 router.get('/comentarios/:id', getCommentsController); 
-router.post('/comentario', addCommentController);
-router.put('/comentario', editCommentController);
-router.delete('/comentario', deleteCommentController);
+router.post('/comentario', verifyToken, addCommentController);
+router.put('/comentario', verifyToken, editCommentController);
+router.delete('/comentario', verifyToken, deleteCommentController);
 
 module.exports = router;

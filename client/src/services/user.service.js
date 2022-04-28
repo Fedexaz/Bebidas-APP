@@ -22,7 +22,7 @@ export const logueado = () => {
 };
 
 export const getUserData = (name) => {
-    return JSON.parse(localStorage.getItem('data'))[name];
+    return JSON.parse(localStorage.getItem('data')) ? JSON.parse(localStorage.getItem('data'))[name] : null;
 };
 
 export const logout = () => {

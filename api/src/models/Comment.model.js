@@ -5,6 +5,10 @@ const commentSchema = new Schema({
         type: String,
         required: true
     },
+    userName: {
+        type: String,
+        required: true
+    },
     drinkID: {
         type: String,
         required: true
@@ -13,10 +17,7 @@ const commentSchema = new Schema({
         type: String,
         required: true
     },
-    date: {
-        type: Date,
-        default: new Date()
-    }
+    date: Date
 });
 
 module.exports = model('Comment', commentSchema);

@@ -7,6 +7,11 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 import './resources/extras/extras.css';
 import './resources/extras/loader.css';
 import axios from 'axios';
+import moment from 'moment';
+import 'moment/locale/es';
+
+const fechas = moment();
+fechas.locale('es');
 
 axios.defaults.baseURL = process.env.REACT_APP_APIURL || "http://localhost:3001";
 

@@ -71,18 +71,20 @@ const removeLikeService = async (drinkID, userID) => {
 
 const getCommentsService = async (drinkID) => {
     try {
-        const comentarios = [];
         const commentsData = await Comment.find({ drinkID });
-
-        commentsData.length ? commentsData.forEach(async (comm) => {
-            const user = await User.findById(comm.userID);
-            comentarios.push({
-                user: user.name,
-                comment: comm.comment,
-                date: comm.date
+        if (commentsData.length) {
+            const comentarios = commentsData.map((comm, i) => {
+                return {
+                    commentID: comm._id,
+                    drinkID: comm.drinkID,
+                    userID: comm.userID,
+                    userName: comm.userName,
+                    comment: comm.comment,
+                    date: comm.date
+                };
             });
-        }) : null;
-        return comentarios;
+            return comentarios;
+        }
     } catch (error) {
         console.log(error);
         throw error;
@@ -91,9 +93,12 @@ const getCommentsService = async (drinkID) => {
 
 const addCommentService = async (data) => {
     try {
-        const comment = new Comment(data);
+        const comment = new Comment({
+            ...data,
+            date: new Date()
+        });
         const drink = await Bebidas.findById(data.drinkID);
-        drink.comments += 1;
+        drink.comments++;
         await comment.save();
         await drink.save();
     } catch (error) {
@@ -122,10 +127,10 @@ const deleteCommentService = async (commentID, userID) => {
     try {
         const comment = await Comment.findById(commentID);
         if (comment.userID === userID) {
-            await Comment.findByIdAndDelete(commentID);
-            const drink = await Bebidas.findById(data.drinkID);
-            drink.comments -= 1
+            const drink = await Bebidas.findById(comment.drinkID);
+            drink.comments--;
             await drink.save();
+            await Comment.findByIdAndDelete(commentID);
         }
         else {
             throw Error("No es tu comentario");

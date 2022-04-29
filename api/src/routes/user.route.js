@@ -8,6 +8,6 @@ router.post('/register', authRegisterController);
 
 router.post('/favoritos/ver', verifyToken, getFavoriteController);
 router.post('/favoritos/agregar', verifyToken, addFavoriteController);
-router.delete('/favoritos/remover', verifyToken, removeFavoriteController);
+router.post('/favoritos/remover', verifyToken, removeFavoriteController);
 
 module.exports = router;

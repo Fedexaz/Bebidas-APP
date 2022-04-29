@@ -29,3 +29,28 @@ export const logout = () => {
     localStorage.clear();
     window.location.reload();
 };
+
+export const obtenerFavoritos = async (userID) => {
+    try {
+        const resp = await axios.post('/user/favoritos/ver', { userID }, { headers: { "auth-token": JSON.parse(localStorage.getItem('token')) } });
+        return resp.data;
+    } catch (error) {
+        return error;
+    }
+};
+
+export const agregarFavoritos = async (userID, bebidaID) => {
+    try {
+        await axios.post('/user/favoritos/agregar', { userID, bebidaID }, { headers: { "auth-token": JSON.parse(localStorage.getItem('token')) } });
+    } catch (error) {
+        return error;
+    }
+};
+
+export const eliminarFavoritos = async (userID, bebidaID) => {
+    try {
+        await axios.post('/user/favoritos/remover', { userID, bebidaID }, { headers: { "auth-token": JSON.parse(localStorage.getItem('token')) } });
+    } catch (error) {
+        return error;
+    }
+};

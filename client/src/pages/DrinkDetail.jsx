@@ -5,10 +5,11 @@ import Footer from '../components/Home/Footer';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getDrinkComments, getDrinkDetail, postComentario, borrarComentario, addLike, removeLike, getLikes } from '../services/getdrinks.service';
 import Loader from '../components/Loader/Loader';
-import { FcComments, FcLike, FcEmptyTrash } from 'react-icons/fc';
+import { FcComments, FcLike, FcEmptyTrash, FcRating } from 'react-icons/fc';
 import { timeLeftComment } from '../services/time.utils';
-import { getUserData } from '../services/user.service';
+import { agregarFavoritos, getUserData, obtenerFavoritos } from '../services/user.service';
 import { tieneLike } from '../controllers/drinkLike.controller';
+import { inFavorites } from '../controllers/drinkFavorites.controller';
 
 export default function DrinkDetail() {
   const { id } = useParams();
@@ -16,6 +17,8 @@ export default function DrinkDetail() {
   const usuarioID = getUserData('id');
 
   const [captcha, setCaptcha] = useState(Math.round(Math.random() * 100000));
+
+  const [favoritos, setFavoritos] = useState([]);
 
   const [comentario, setComentario] = useState('');
   const [captchaController, setCaptchaController] = useState('');
@@ -26,9 +29,14 @@ export default function DrinkDetail() {
   const [drinkLikes, setDrinkLikes] = useState([]);
 
   useEffect(() => {
+    document.title = "TuFinde! - " + drinkData.nombre;
+  }, [drinkData])
+
+  useEffect(() => {
     loadDrink();
     loadComments();
     obtenerLikes();
+    cargarFavoritos();
     return () => {
       setDrinkData({});
       setDrinkComments([]);
@@ -54,6 +62,15 @@ export default function DrinkDetail() {
       const data = await getDrinkComments(id);
       setDrinkComments(data);
       setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const cargarFavoritos = async () => {
+    try {
+      const data = await obtenerFavoritos(usuarioID);
+      setFavoritos(data);
     } catch (error) {
       console.log(error);
     }
@@ -130,6 +147,16 @@ export default function DrinkDetail() {
     }
   };
 
+  const addFavoritos = async () => {
+    try {
+      await agregarFavoritos(usuarioID, id);
+      alerta.fire('Excelente', drinkData.nombre + " agregada a favoritos!", 'success');
+      cargarFavoritos();
+    } catch (error) {
+      alerta.fire('Error', error, 'warning');
+    }
+  };
+
   return (
     <>
       <NavBar />
@@ -147,7 +174,15 @@ export default function DrinkDetail() {
                     &nbsp;&nbsp;
                     {
                       localStorage.getItem('loggedIn') ?
-                        <button className='btn btn-info' title='reaccionar' onClick={() => !tieneLike(drinkLikes, usuarioID) ? setLike() : deleteLike()}><FcLike style={{ fontSize: '23px' }} /> {drinkLikes.length}</button>
+                        <>
+                          <button className='btn btn-info' title='reaccionar' onClick={() => !tieneLike(drinkLikes, usuarioID) ? setLike() : deleteLike()}><FcLike style={{ fontSize: '23px' }} /> {drinkLikes.length}</button>
+                          {
+                            inFavorites(favoritos, id) ?
+                              <button className='btn btn-info mx-2' title='Agregar a favoritos' onClick={addFavoritos}><FcRating style={{ fontSize: '23px' }} /> Agregar {drinkData.nombre} a favoritos</button>
+                              :
+                              null
+                          }
+                        </>
                         :
                         <span className='text-decoration-none text-light' title='reacciones'><FcLike style={{ fontSize: '23px' }} /> {drinkLikes.length}</span>
                     }
@@ -190,13 +225,13 @@ export default function DrinkDetail() {
                         })
                         :
                         localStorage.getItem('loggedIn') ?
-                        <div className='alert alert-info'>
-                          Aún no hay comentarios... ¡sé el primero en hacerlo!
-                        </div>
-                        :
-                        <div className='alert alert-info'>
-                          Aún no hay comentarios...<br />¡<strong className='boton' onClick={() => goto('/login')}>Inicia sesión</strong> o <strong className='boton' onClick={() => goto('/register')}>Regístrate</strong> para comentar!
-                        </div>
+                          <div className='alert alert-info'>
+                            Aún no hay comentarios... ¡sé el primero en hacerlo!
+                          </div>
+                          :
+                          <div className='alert alert-info'>
+                            Aún no hay comentarios...<br />¡<strong className='boton' onClick={() => goto('/login')}>Inicia sesión</strong> o <strong className='boton' onClick={() => goto('/register')}>Regístrate</strong> para comentar!
+                          </div>
                     }
                   </div>
                   <hr />

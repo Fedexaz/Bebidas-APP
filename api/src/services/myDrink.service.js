@@ -11,6 +11,7 @@ const getMyDrinkService = async (creatorID) => {
 
 const addMyDrinkService = async (data) => {
     try {
+        console.log(data.img);
         const bebida = new Bebidas(data);
         await bebida.save();
     } catch (error) {

@@ -7,7 +7,7 @@ const {
     deleteMyDrinkController,
 } = require('../controllers/myDrink.controller');
 
-router.get('/', getMyDrinkController); 
+router.get('/', getMyDrinkController);
 router.post('/', addMyDrinkController);
 router.put('/', editMyDrinkController);
 router.delete('/', deleteMyDrinkController);

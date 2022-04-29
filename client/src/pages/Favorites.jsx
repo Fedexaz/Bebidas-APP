@@ -11,8 +11,12 @@ import { eliminarFavoritos, getUserData, obtenerFavoritos } from '../services/us
 export default function Favorites() {
   const goto = useNavigate();
   const usuarioID = getUserData('id');
+  const logeado = getUserData('loggedIn');
 
   useEffect(() => {
+    if(!logeado){
+      goto('/');
+    }
     document.title = "TuFinde! - Mis favoritas";
     cargarFavoritos();
     return () => {

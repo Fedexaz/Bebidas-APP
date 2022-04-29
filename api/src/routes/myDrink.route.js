@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const verifyToken = require('../middlewares/validate-token');
 
 const {
     getMyDrinkController,
@@ -7,9 +8,9 @@ const {
     deleteMyDrinkController,
 } = require('../controllers/myDrink.controller');
 
-router.get('/', getMyDrinkController);
-router.post('/', addMyDrinkController);
-router.put('/', editMyDrinkController);
-router.delete('/', deleteMyDrinkController);
+router.get('/:id', verifyToken, getMyDrinkController);
+router.post('/', verifyToken, addMyDrinkController);
+router.put('/', verifyToken, editMyDrinkController);
+router.delete('/', verifyToken, deleteMyDrinkController);
 
 module.exports = router;

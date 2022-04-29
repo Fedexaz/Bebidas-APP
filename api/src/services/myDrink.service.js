@@ -11,9 +11,9 @@ const getMyDrinkService = async (creatorID) => {
 
 const addMyDrinkService = async (data) => {
     try {
-        console.log(data.img);
         const bebida = new Bebidas(data);
         await bebida.save();
+        return true;
     } catch (error) {
         throw error;
     }  
@@ -25,7 +25,7 @@ const editMyDrinkService = async (creatorID, drinkID) => {
 
 const deleteMyDrinkService = async (userID, drinkID) => {
     try {
-        const drink = await Bebidas.findOne(drinkID);
+        const drink = await Bebidas.findById(drinkID);
         if(drink.creatorID === userID) {
             await Bebidas.findByIdAndDelete(drinkID);
         }   

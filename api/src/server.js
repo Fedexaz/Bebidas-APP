@@ -4,6 +4,7 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const cors = require('cors');
 const rutas = require('./routes/');
+
 var corsOptions = {
     origin: '*',
     optionsSuccessStatus: 200

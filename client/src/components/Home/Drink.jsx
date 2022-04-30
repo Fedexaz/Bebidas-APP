@@ -8,7 +8,7 @@ export default function Drink({ data }) {
 
   return (
     <div className="card text-white bg-dark m-1 d-flex flex-row align-items-center hover-tarjeta boton" onClick={() => goto('/drink/' + _id)} style={{ width: '480px' }}>
-      <img className="img-fluid border-dark" width='210px' src={img} alt={nombre} />
+      <img className="img-fluid border-dark" width='190px' src={img} alt={nombre} />
       <div className="card-body">
         <h6 className="card-title">{nombre}</h6>
         <div className="card-text" style={{ fontSize: '14px' }}>

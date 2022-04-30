@@ -178,7 +178,7 @@ export default function DrinkDetail() {
                           <button className='btn btn-info' title='reaccionar' onClick={() => !tieneLike(drinkLikes, usuarioID) ? setLike() : deleteLike()}><FcLike style={{ fontSize: '23px' }} /> {drinkLikes.length}</button>
                           {
                             inFavorites(favoritos, id) ?
-                              <button className='btn btn-info mx-2' title='Agregar a favoritos' onClick={addFavoritos}><FcRating style={{ fontSize: '23px' }} /> Agregar {drinkData.nombre} a favoritos</button>
+                              <button className='btn btn-info mx-1 mt-1' title='Agregar a favoritos' onClick={addFavoritos}><FcRating style={{ fontSize: '23px' }} /> Agregar {drinkData.nombre} a favoritos</button>
                               :
                               null
                           }
@@ -240,7 +240,7 @@ export default function DrinkDetail() {
                       <div>
                         <label htmlFor="comentario" className="form-label text-light">Escribe un comentario</label>
                         <textarea className="form-control" name="comentario" id="comentario" rows="3" value={comentario} onChange={(e) => setComentario(e.target.value)} placeholder='Escribe tu comentario aquí'></textarea>
-                        <div className='alert alert-info d-flex align-items-center mt-2'>
+                        <div className='alert alert-info d-flex align-items-center flex-wrap mt-2'>
                           Ingresá el siguiente número en el cuadro:&nbsp;<strong>{captcha}</strong>&nbsp;&nbsp;<input type="text" className="form-control" value={captchaController} onChange={(e) => setCaptchaController(e.target.value)} style={{ width: '200px' }} name="captchaController" id="captchaController" />
                         </div>
                         <button className='btn btn-info' onClick={postComment}>Comentar</button>

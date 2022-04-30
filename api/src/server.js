@@ -6,7 +6,7 @@ const cors = require('cors');
 const rutas = require('./routes/');
 
 var corsOptions = {
-    origin: '*',
+    origin: 'https://tufindeapp-3seuoy5rr-fedexaz.vercel.app/',
     optionsSuccessStatus: 200
 }
 

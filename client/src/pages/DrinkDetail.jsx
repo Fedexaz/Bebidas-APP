@@ -178,7 +178,7 @@ export default function DrinkDetail() {
                           <button className='btn btn-info' title='reaccionar' onClick={() => !tieneLike(drinkLikes, usuarioID) ? setLike() : deleteLike()}><FcLike style={{ fontSize: '23px' }} /> {drinkLikes.length}</button>
                           {
                             inFavorites(favoritos, id) ?
-                              <button className='btn btn-info mx-1 mt-1' title='Agregar a favoritos' onClick={addFavoritos}><FcRating style={{ fontSize: '23px' }} /> Agregar {drinkData.nombre} a favoritos</button>
+                              <button className='btn btn-info mx-1' title='Agregar a favoritos' onClick={addFavoritos}><FcRating style={{ fontSize: '23px' }} /> Agregar {drinkData.nombre} a favoritos</button>
                               :
                               null
                           }

@@ -61,6 +61,8 @@ export default function MyDrinks() {
           setIngredientes('');
           setInstrucciones('');
           setImagen('');
+          setCaptchaController('');
+          setCaptcha(Math.round(Math.random() * 100000));
           cargarMisBebidas();
         } catch (error) {
           alerta.fire('Ups', "Error al agregar la bebida", "error");
@@ -220,7 +222,7 @@ export default function MyDrinks() {
                         </div>
                       </div>
                       <div className="row">
-                        <div className='alert alert-info d-flex align-items-center mt-2'>
+                        <div className='alert alert-info d-flex align-items-center flex-wrap mt-2'>
                           Ingresá el siguiente número en el cuadro:&nbsp;<strong>{captcha}</strong>&nbsp;&nbsp;<input type="text" className="form-control" value={captchaController} onChange={(e) => setCaptchaController(e.target.value)} style={{ width: '320px' }} name="captchaController" id="captchaController" />
                         </div>
                         <button type="submit" className="btn btn-info mt-2">Agregar bebida</button>

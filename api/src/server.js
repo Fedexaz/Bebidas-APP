@@ -6,7 +6,7 @@ const cors = require('cors');
 const rutas = require('./routes/');
 
 var corsOptions = {
-    origin: 'https://tufindeapp.vercel.app/',
+    origin: '*',
     optionsSuccessStatus: 200
 }
 

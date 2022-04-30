@@ -14,7 +14,7 @@ export default function Favorites() {
   const logeado = getUserData('loggedIn');
 
   useEffect(() => {
-    if(!logeado){
+    if(!JSON.parse(localStorage.getItem('loggedIn'))){
       goto('/');
     }
     document.title = "TuFinde! - Mis favoritas";

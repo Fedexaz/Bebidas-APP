@@ -11,7 +11,6 @@ import { FcComments, FcLike, FcEmptyTrash } from 'react-icons/fc';
 export default function MyDrinks() {
   const goto = useNavigate();
   const usuarioID = getUserData('id');
-  const logeado = getUserData('loggedIn');
   const [misBebidas, setMisBebidas] = useState([]);
   const [loadingMisBebidas, setLoadingMisBebidas] = useState(true);
 
@@ -27,7 +26,7 @@ export default function MyDrinks() {
 
 
   useEffect(() => {
-    if(!logeado){
+    if(!JSON.parse(localStorage.getItem('loggedIn'))){
       goto('/');
     }
     document.title = "TuFinde! - Mis bebidas";

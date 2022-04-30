@@ -5,7 +5,7 @@ import Register from './pages/Register';
 import DrinkDetail from './pages/DrinkDetail';
 import Favorites from './pages/Favorites';
 import MyDrinks from './pages/MyDrinks';
-import Perfil from './pages/Perfil';
+//import Perfil from './pages/Perfil';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <Route exact path='/drink/:id' element={<DrinkDetail />}/>
       <Route exact path='/mis-bebidas' element={<MyDrinks />}/>
       <Route exact path='/favoritos' element={<Favorites />}/>
-      <Route exact path='/perfil' element={<Perfil />}/>
+      {/* <Route exact path='/perfil' element={<Perfil />}/> */}
       <Route path='*' element={<Home />} />
     </Routes>
   );

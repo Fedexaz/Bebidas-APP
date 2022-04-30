@@ -39,7 +39,7 @@ export default function NavBar() {
                       <FcExpand />
                     </span>
                     <ul className="dropdown-menu bg-dark text-light" aria-labelledby="navbarDropdown">
-                      <li><span className="dropdown-item boton-menu text-light" onClick={() => goto('/perfil')}>Perfil</span></li>
+                      <li><span className="dropdown-item boton-menu text-light disabled" onClick={() => goto('/perfil')}>Menú</span></li>
                       <li><span className="dropdown-item boton-menu text-light" onClick={() => goto('/favoritos')}>Mis bebidas favoritas</span></li>
                       <li><span className="dropdown-item boton-menu text-light" onClick={() => goto('/mis-bebidas')}>Mis bebidas publicadas</span></li>
                       <li><hr className="dropdown-divider" /></li>

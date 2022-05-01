@@ -127,9 +127,9 @@ export default function MyDrinks() {
                       <div className='card bg-dark border border-dark d-flex flex-row hover-tarjeta boton my-1' key={el._id}>
                         <img src={el.img} alt={el.nombre} width='200px' height='180px' />
                         <div className='d-flex flex-column'>
-                          <div className='d-flex flex-row'>
+                          <div className='d-flex flex-row align-items-center'>
                             <span className='text-light mx-2 my-1 d-flex align-items-center boton' onClick={() => goto('/drink/' + el._id)} style={{ fontSize: '22px' }}>{el.nombre}</span>
-                            &nbsp;<FcEmptyTrash onClick={() => deleteDrink(el._id, el.nombre)} title='eliminar bebida' className='boton' />
+                            &nbsp;<FcEmptyTrash onClick={() => deleteDrink(el._id, el.nombre)} style={{ fontSize: '23px' }} title='eliminar bebida' className='boton' />
                           </div>
                           <span className='text-light mx-2 my-1' style={{ fontSize: '17px' }}>Categoría: <strong>{el.categoria}</strong></span>
                           <span className='text-light mx-2 my-1' style={{ fontSize: '17px' }}>Es: <strong>{el.tieneAlcohol}</strong></span>
